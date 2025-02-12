@@ -1,6 +1,5 @@
 name: Daily Commit
 
-# Schedule the workflow to run once a day at 08:00 UTC
 on:
   schedule:
     - cron: '0 8 * * *'
@@ -9,11 +8,9 @@ jobs:
   daily-commit:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Commit changes with a specific message
       - name: Commit changes
         run: |
           echo "Automated daily commit" > daily_commit.txt
@@ -22,12 +19,10 @@ jobs:
           git add daily_commit.txt
           git commit -m "Automated commit $(date +"%Y-%m-%d %H:%M:%S")"
 
-      # Push the changes to the repository
       - name: Push changes
         run: git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      # Include a step with the specified email in its name
       - name: Notify - vijayasree.srilal1@straive.com
         run: echo "Daily commit completed."

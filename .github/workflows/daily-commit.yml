@@ -21,9 +21,9 @@ jobs:
           git commit -m "Automated commit $(date +"%Y-%m-%d %H:%M:%S")"
 
       - name: Push changes
-        run: git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Chiku/sample.git
+          git push
 
       - name: Notify - vijayasree.srilal1@straive.com
         run: echo "Daily commit completed."

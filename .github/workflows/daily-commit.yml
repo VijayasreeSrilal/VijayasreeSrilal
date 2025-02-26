@@ -22,7 +22,7 @@ jobs:
 
       - name: Push changes
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Chiku/sample.git
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@https://github.com/VijayasreeSrilal/VijayasreeSrilal/tree/main/.github/workflows
           git push
 
       - name: Notify - vijayasree.srilal1@straive.com
